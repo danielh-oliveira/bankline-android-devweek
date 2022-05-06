@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">bankline-devweek</string>
+    <string name="txt_continue">Continuar</string>
+    <string name="txt_welcome">Olá, bem-vindo(a) à Santander Dev Week! Digite o ID do correntista para visualzar o extrato:</string>
+</resources>

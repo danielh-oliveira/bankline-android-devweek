@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">bankline-android-devweek</string>
+    <string name="app_name">bankline-devweek</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_welcome">Hello, welcome to Santander Dev Week! Enter the account holder ID to view the statement:</string>
 </resources>
