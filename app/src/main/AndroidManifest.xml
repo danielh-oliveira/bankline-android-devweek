@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.daniel.bankline_android_devweek" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".ui.satement.BankStatementActivity"
+            android:name=".ui.statement.BankStatementActivity"
             android:parentActivityName=".ui.welcome.WelcomeActivity"
             android:exported="false" />
 
