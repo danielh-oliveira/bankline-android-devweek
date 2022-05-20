@@ -1,7 +1,6 @@
 package br.com.daniel.bankline_android_devweek.domain
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDateTime
 
 data class Movimentacao(
     val id: Int,

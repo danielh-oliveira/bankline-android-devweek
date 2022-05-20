@@ -1,15 +1,15 @@
 package br.com.daniel.bankline_android_devweek.ui.welcome
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import br.com.daniel.bankline_android_devweek.databinding.ActivityWelcomeBinding
-import br.com.daniel.bankline_android_devweek.domain.Correntista
+import br.com.daniel.bankline_android_devweek.ui.ID_ACCOUNT_HOLDER
 import br.com.daniel.bankline_android_devweek.ui.statement.BankStatementActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
-    //by lazy: quando alguem precisar dessa variavel executar esse trecho de codigo.
     private val binding by lazy {
         ActivityWelcomeBinding.inflate(layoutInflater)
     }
@@ -19,12 +19,25 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btContinue.setOnClickListener {
-            val accontHolderId = binding.editTextAccontHolderId.text.toString().toInt()
-
-            val intent = Intent(this, BankStatementActivity::class.java).apply {
-                putExtra(BankStatementActivity.EXTRA_ACCOUNT_HOLDER, Correntista(accontHolderId))
+            try {
+                val accontHolderId = getIdAccount()
+                intentWith(accontHolderId)
+            } catch (e: IllegalArgumentException) {
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
             }
-            startActivity(intent)
         }
+    }
+
+    private fun intentWith(accountHolderId: Int) {
+        val intent = Intent(this, BankStatementActivity::class.java).apply {
+            putExtra(ID_ACCOUNT_HOLDER, accountHolderId)
+        }
+        startActivity(intent)
+    }
+
+    private fun getIdAccount(): Int {
+        val accountId = binding.editTextAccontHolderId.text.toString().toInt()
+        if (accountId == 0) throw IllegalArgumentException("ZERO can not be an account")
+        return accountId
     }
 }
